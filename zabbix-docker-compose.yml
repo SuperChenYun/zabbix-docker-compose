@@ -70,10 +70,10 @@ services:
       networks:
         zabbix-network:
 
-#volumes: 
-#  zabbix-server-data:
-#  zabbix-mysql-data:
-#  zabbix-web-data:
+volumes: 
+  zabbix-server-data:
+  zabbix-mysql-data:
+  zabbix-web-data:
 
 networks:
    zabbix-network:
