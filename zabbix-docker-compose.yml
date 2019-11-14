@@ -31,8 +31,18 @@ services:
     ports:
       - 10051:10051	
     volumes:
-      - zabbix-server-data:/var/lib/zabbix/
-      - zabbix-server-scripts-data:/usr/lib/zabbix
+      - zabbix-alertscripts:/usr/lib/zabbix/alertscripts
+      - zabbix-externalscripts:/usr/lib/zabbix/externalscripts
+      - zabbix-enc:/var/lib/zabbix/enc
+      - zabbix-mibs:/var/lib/zabbix/mibs
+      - zabbix-modules:/var/lib/zabbix/modules
+      - zabbix-snmptraps:/var/lib/zabbix/snmptraps
+      - zabbix-ssh_keys:/var/lib/zabbix/ssh_keys
+      - zabbix-ssl-certs:/var/lib/zabbix/ssl/certs
+      - zabbix-ssl-keys:/var/lib/zabbix/ssl/keys
+      - zabbix-ssl-ssl_ca:/var/lib/zabbix/ssl/ssl_ca
+
+
     networks:
         zabbix-network:
 
@@ -72,8 +82,16 @@ services:
         zabbix-network:
 
 volumes: 
-  zabbix-server-data:
-  zabbix-server-scripts-data:
+  zabbix-alertscripts:
+  zabbix-externalscripts:
+  zabbix-enc:
+  zabbix-mibs:
+  zabbix-modules:
+  zabbix-snmptraps:
+  zabbix-ssh_keys:
+  zabbix-ssl-certs:
+  zabbix-ssl-keys:
+  zabbix-ssl-ssl_ca:
   zabbix-mysql-data:
   zabbix-web-data:
 
