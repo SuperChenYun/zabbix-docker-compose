@@ -32,6 +32,7 @@ services:
       - 10051:10051	
     volumes:
       - zabbix-server-data:/var/lib/zabbix/
+      - zabbix-server-scripts-data:/usr/lib/zabbix
     networks:
         zabbix-network:
 
@@ -72,6 +73,7 @@ services:
 
 volumes: 
   zabbix-server-data:
+  zabbix-server-scripts-data:
   zabbix-mysql-data:
   zabbix-web-data:
 
