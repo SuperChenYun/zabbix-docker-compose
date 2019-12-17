@@ -26,10 +26,18 @@ services:
       MYSQL_PASSWORD: zabbix
       ZBX_JAVAGATEWAY: zabbix-java-gateway
       ZBX_STARTDISCOVERERS: 3
+      ZBX_STARTVMWARECOLLECTORS: 1
+      ZBX_VMWAREFREQUENCY: 60
+      ZBX_VMWAREPERFFREQUENCY: 60
+      ZBX_VMWARECACHESIZE: 8M
+      ZBX_VMWARETIMEOUT: 10
     depends_on:
       - zabbix-mysql
     ports:
       - 10051:10051	
+    networks:
+         zabbix-network:
+            ipv4_address: 172.19.0.2  
     volumes:
       - zabbix-alertscripts:/usr/lib/zabbix/alertscripts
       - zabbix-externalscripts:/usr/lib/zabbix/externalscripts
@@ -42,9 +50,6 @@ services:
       - zabbix-ssl-keys:/var/lib/zabbix/ssl/keys
       - zabbix-ssl-ssl_ca:/var/lib/zabbix/ssl/ssl_ca
 
-
-    networks:
-        zabbix-network:
 
   zabbix-web-nginx:
     image: zabbix/zabbix-web-nginx-mysql:latest
@@ -73,7 +78,7 @@ services:
       container_name: zabbix-server-agent
       environment:
         ZBX_HOSTNAME: "Zabbix server"
-        ZBX_SERVER_HOST: 172.19.0.1
+        ZBX_SERVER_HOST: 172.19.0.2
         ZBX_SERVER_PORT: 10051
       depends_on:
         - zabbix-server
