@@ -14,6 +14,8 @@ services:
       - zabbix-mysql-data:/var/lib/mysql
     networks:
         zabbix-network:
+           ipv4_address: 172.19.0.3  
+
 
   zabbix-server:
     image: zabbix/zabbix-server-mysql:latest
@@ -36,7 +38,7 @@ services:
     ports:
       - 10051:10051	
     networks:
-         zabbix-network:
+        zabbix-network:
             ipv4_address: 172.19.0.2  
     volumes:
       - zabbix-alertscripts:/usr/lib/zabbix/alertscripts
@@ -72,6 +74,7 @@ services:
       - zabbix-web-data:/usr/share/zabbix
     networks:
         zabbix-network:
+            ipv4_address: 172.19.0.4
 
   zabbix-server-agent:
       image: zabbix/zabbix-agent:latest
@@ -85,8 +88,8 @@ services:
       ports:
         - 10050:10050
       networks:
-        zabbix-network:
-
+            zabbix-network:
+                ipv4_address: 172.19.0.5 
 volumes: 
   zabbix-alertscripts:
   zabbix-externalscripts:
