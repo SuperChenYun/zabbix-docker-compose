@@ -4,10 +4,9 @@ services:
     image: mysql:5.7
     container_name: zabbix-mysql
     restart: always
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --innodb_large_prefix=ON --innodb_file_format=Barracuda --ROW_FORMAT=DYNAMIC
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --innodb_large_prefix=ON --innodb_file_format=Barracuda
     environment:
       MYSQL_ROOT_PASSWORD: zabbix
-      MYSQL_DATABASE: zabbix
     ports:
       - 3306:3306
     volumes:
@@ -69,7 +68,7 @@ services:
       - zabbix-mysql
       - zabbix-server
     ports:
-      - 4000:80
+      - 4000:8080
     volumes:
       - zabbix_web-data:/usr/share/zabbix
     networks:
