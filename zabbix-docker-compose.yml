@@ -4,7 +4,7 @@ services:
     image: mysql:5.7
     container_name: zabbix-mysql
     restart: always
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --innodb_large_prefix=ON --innodb_file_format=Barracuda --ROW_FORMAT=DYNAMIC
     environment:
       MYSQL_ROOT_PASSWORD: zabbix
       MYSQL_DATABASE: zabbix
